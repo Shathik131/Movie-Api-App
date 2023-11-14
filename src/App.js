@@ -24,7 +24,7 @@ function App() {
   return (
     <div className='app'>
       <h1>Movie-App</h1>
-
+ 
       <div className='search'>
         <input
           type='text'
