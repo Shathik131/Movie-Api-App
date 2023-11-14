@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import SearchIcon from "./search.svg";
-import MovieCard from "./MovieCard";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import SearchIcon from './search.svg';
+import MovieCard from './MovieCard';
 
 function App() {
-  const API_URL = "http://www.omdbapi.com?i=tt3896198&apikey=250834c2";
+  const API_URL = 'http://www.omdbapi.com?i=tt3896198&apikey=250834c2';
   const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   console.log();
   const searchMovies = async (title) => {
@@ -18,36 +18,36 @@ function App() {
   };
 
   useEffect(() => {
-    searchMovies("");
+    searchMovies('');
   }, []);
 
   return (
-    <div className="app">
+    <div className='app'>
       <h1>Movie-App</h1>
 
-      <div className="search">
+      <div className='search'>
         <input
-          type="text"
-          placeholder="Search for movies"
+          type='text'
+          placeholder='Search for movies'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
         <img
           src={SearchIcon}
-          alt="search"
+          alt='search'
           onClick={() => searchMovies(searchTerm)}
         />
       </div>
 
       {movies?.length > 0 ? (
-        <div className="container">
+        <div className='container'>
           {movies.map((movie) => (
             <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
       ) : (
-        <div className="empty">
+        <div className='empty'>
           <h2>No movie found</h2>
         </div>
       )}
