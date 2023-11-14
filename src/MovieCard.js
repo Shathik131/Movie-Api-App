@@ -6,7 +6,7 @@ const MovieCard = ({movie}) => {
       <div>
         <p>{movie.Year}</p>
       </div>
-
+ 
       <div>
         <img
           src={

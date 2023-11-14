@@ -1,29 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import SearchIcon from './search.svg';
-import MovieCard from './MovieCard';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import SearchIcon from "./search.svg";
+import MovieCard from "./MovieCard";
+import axios from "axios";
 
 function App() {
-  const API_URL = 'http://www.omdbapi.com?i=tt3896198&apikey=250834c2';
+  const API_URL = "http://www.omdbapi.com?i=tt3896198&apikey=250834c2";
   const [movies, setMovies] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
- 
-  const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
-    const data = await response.json();
+  const [searchTerm, setSearchTerm] = useState("");
 
-    console.log(data.Search);
-    setMovies(data.Search);
+  const searchMovies = async (title) => {
+    try {
+      const response = await axios.get(`${API_URL}&s=${title}`);
+      const data = response.data;
+
+      // console.log(data.Search);
+      setMovies(data.Search);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    }
   };
 
   useEffect(() => {
-    searchMovies('');
+    searchMovies("");
   }, []);
 
   return (
     <div className='app'>
       <h1>Movie-App</h1>
- 
+
       <div className='search'>
         <input
           type='text'
