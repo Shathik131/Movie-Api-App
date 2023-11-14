@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
-  
+
 function App() {
   const API_URL = "http://www.omdbapi.com?i=tt3896198&apikey=250834c2";
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  console.log();
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
 
-    // console.log(data.Search);
+    console.log(data.Search);
     setMovies(data.Search);
   };
 
@@ -42,7 +43,7 @@ function App() {
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie) => (
-            <MovieCard movie={movie} />
+            <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
       ) : (
