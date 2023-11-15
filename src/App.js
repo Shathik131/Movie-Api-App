@@ -10,15 +10,16 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const searchMovies = async (title) => {
-    try {
-      const response = await axios.get(`${API_URL}&s=${title}`);
-      const data = response.data;
+    await axios
+      .get(`${API_URL}&s=${title}`)
+      .then((res) => {
+        // console.log(res.data);
+        setMovies(res.data.Search);
+      })
 
-      // console.log(data.Search);
-      setMovies(data.Search);
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    }
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
