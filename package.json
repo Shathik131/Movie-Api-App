@@ -1,5 +1,5 @@
 {
-  "name": "one",
+  "name": "movie-api-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
