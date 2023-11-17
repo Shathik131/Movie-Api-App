@@ -13,7 +13,7 @@ const Home = () => {
     await axios
       .get(`${API_URL}&s=${title}`)
       .then((res) => {
-        // console.log(res.data);
+        // console.log(res.data)
         setMovies(res.data.Search);
       })
 
@@ -51,7 +51,7 @@ const Home = () => {
             <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
-      ) : (
+      ) : ( 
         <div className='empty'>
           <h2>No movie found</h2>
         </div>
