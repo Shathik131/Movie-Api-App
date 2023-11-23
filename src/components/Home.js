@@ -51,10 +51,10 @@ const Home = () => {
             <MovieCard key={movie.imdbID} movie={movie} />
           ))}
         </div>
-      ) : ( 
+      ) : (
         <div className='empty'>
           <h2>No movie found</h2>
-        </div> 
+        </div>
       )}
     </div>
   );
